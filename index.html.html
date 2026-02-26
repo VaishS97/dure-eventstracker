@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dure Technologies — Global Health Events 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-mid: #4a4a4a;
+    --ink-light: #888;
+    --ink-faint: #bbb;
+    --page: #fafaf8;
+    --white: #ffffff;
+    --border: #e8e8e4;
+    --border-strong: #d0d0c8;
+    --accent: #1d6b4f;
+    --accent-light: #e8f4ef;
+    --accent-mid: #2e9a72;
+    --must: #c0392b;
+    --must-bg: #fef5f4;
+    --rec: #b8670a;
+    --rec-bg: #fef9f0;
+    --mon: #666;
+    --mon-bg: #f5f5f5;
+    --africa-color: #8b3a00;
+    --africa-bg: #fef4ee;
+    --global-color: #1a3a6b;
+    --global-bg: #eef3fc;
+    --asia-color: #5a3a00;
+    --asia-bg: #fef8ee;
+    --europe-color: #1a4a1a;
+    --europe-bg: #eef5ee;
+    --americas-color: #3a006b;
+    --americas-bg: #f5eefe;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--page);
+    color: var(--ink);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+
+  .logo-block { display: flex; flex-direction: column; gap: 1px; }
+  .logo-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    color: var(--accent);
+    letter-spacing: -0.3px;
+  }
+  .logo-sub {
+    font-size: 11px;
+    color: var(--ink-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .header-stats {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .stat-pill {
+    font-size: 12px;
+    color: var(--ink-mid);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .stat-pill strong { color: var(--ink); font-weight: 600; }
+
+  /* ── CONTROLS ── */
+  .controls {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 32px;
+    position: sticky;
+    top: 65px;
+    z-index: 99;
+  }
+  .controls-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 0 0 220px;
+  }
+  .search-wrap svg {
+    position: absolute;
+    left: 10px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-faint);
+    pointer-events: none;
+  }
+  .search-input {
+    width: 100%;
+    padding: 7px 10px 7px 32px;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--page);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input:focus { border-color: var(--accent); }
+
+  .divider { width: 1px; height: 28px; background: var(--border); margin: 0 4px; }
+
+  .filter-group { display: flex; gap: 5px; flex-wrap: wrap; }
+  .filter-label {
+    font-size: 11px;
+    color: var(--ink-light);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    align-self: center;
+    margin-right: 2px;
+  }
+
+  .btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 5px;
+    border: 1px solid var(--border-strong);
+    background: var(--white);
+    color: var(--ink-mid);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+  .btn.africa.active { background: var(--africa-color); border-color: var(--africa-color); }
+  .btn.global.active { background: var(--global-color); border-color: var(--global-color); }
+  .btn.asia.active { background: var(--asia-color); border-color: var(--asia-color); }
+  .btn.europe.active { background: var(--europe-color); border-color: var(--europe-color); }
+  .btn.americas.active { background: var(--americas-color); border-color: var(--americas-color); }
+  .btn.intergov.active { background: #5b21b6; border-color: #5b21b6; }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 28px 32px 60px;
+  }
+
+  /* ── MONTH GROUP ── */
+  .month-group { margin-bottom: 36px; }
+  .month-group[hidden] { display: none; }
+
+  .month-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .month-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+  }
+  .month-count {
+    font-size: 12px;
+    color: var(--ink-light);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── EVENT CARD ── */
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 12px;
+  }
+
+  .event-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.18s;
+    position: relative;
+  }
+  .event-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    transform: translateY(-1px);
+  }
+  .event-card[hidden] { display: none; }
+
+  .card-priority-bar {
+    height: 3px;
+    width: 100%;
+  }
+  .priority-must .card-priority-bar { background: var(--must); }
+  .priority-rec .card-priority-bar { background: var(--rec); }
+  .priority-mon .card-priority-bar { background: var(--border-strong); }
+
+  .card-body { padding: 16px 18px 14px; }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .card-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--ink);
+    flex: 1;
+    letter-spacing: -0.2px;
+  }
+
+  .star-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink-faint);
+    font-size: 16px;
+    padding: 2px;
+    transition: color 0.15s, transform 0.15s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .star-btn:hover { color: #f59e0b; transform: scale(1.1); }
+  .star-btn.starred { color: #f59e0b; }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  .meta-chip {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .chip-date { background: var(--page); color: var(--ink-mid); border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 10.5px; }
+  .chip-location { background: var(--page); color: var(--ink-mid); border: 1px solid var(--border); }
+  .chip-region-africa { background: var(--africa-bg); color: var(--africa-color); }
+  .chip-region-global { background: var(--global-bg); color: var(--global-color); }
+  .chip-region-asia { background: var(--asia-bg); color: var(--asia-color); }
+  .chip-region-europe { background: var(--europe-bg); color: var(--europe-color); }
+  .chip-region-americas { background: var(--americas-bg); color: var(--americas-color); }
+  .chip-priority-must { background: var(--must-bg); color: var(--must); }
+  .chip-priority-rec { background: var(--rec-bg); color: var(--rec); }
+  .chip-priority-mon { background: var(--mon-bg); color: var(--mon); }
+  .chip-intergov { background: #f3eeff; color: #5b21b6; }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.55;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .event-card.expanded .card-desc {
+    display: block;
+    -webkit-line-clamp: unset;
+  }
+
+  .card-relevance {
+    display: none;
+    font-size: 12.5px;
+    color: var(--ink-mid);
+    line-height: 1.5;
+    padding: 10px 12px;
+    background: var(--accent-light);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--accent);
+  }
+  .event-card.expanded .card-relevance { display: block; }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+  .tag {
+    font-size: 10.5px;
+    color: var(--ink-light);
+    background: var(--page);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 3px;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+    margin-top: 4px;
+  }
+  .card-link {
+    font-size: 11.5px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card-link:hover { text-decoration: underline; }
+  .expand-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 9px;
+    font-size: 11px;
+    color: var(--ink-light);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s;
+  }
+  .expand-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .event-card.expanded .expand-btn { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  /* ── EMPTY STATE ── */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--ink-light);
+    display: none;
+  }
+  .empty-state.visible { display: block; }
+  .empty-state h3 { font-family: 'Instrument Serif', serif; font-size: 22px; color: var(--ink-mid); margin-bottom: 8px; }
+  .empty-state p { font-size: 14px; }
+
+  /* ── OCCURRED BADGE ── */
+  .occurred-overlay {
+    position: absolute;
+    top: 10px; right: 10px;
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--ink-light);
+    background: var(--page);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 600px) {
+    .events-grid { grid-template-columns: 1fr; }
+    header, .controls { padding-left: 16px; padding-right: 16px; }
+    main { padding: 20px 16px 40px; }
+    .header-stats { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-name">Dure Technologies</span>
+      <span class="logo-sub">Global Health Events 2026 — BD & Travel Tracker</span>
+    </div>
+    <div class="header-stats">
+      <span class="stat-pill"><strong id="total-count">29</strong> events</span>
+      <span class="stat-pill"><strong id="must-count">15</strong> must attend</span>
+      <span class="stat-pill"><strong id="starred-count">0</strong> starred</span>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" class="search-input" id="search" placeholder="Search events…" oninput="applyFilters()">
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="filter-label">Region</span>
+    <div class="filter-group" id="region-filters">
+      <button class="btn active" data-filter="all" onclick="setRegion('all',this)">All</button>
+      <button class="btn africa" data-filter="africa" onclick="setRegion('africa',this)">Africa</button>
+      <button class="btn global" data-filter="global" onclick="setRegion('global',this)">Global</button>
+      <button class="btn asia" data-filter="asia" onclick="setRegion('asia',this)">Asia-Pacific</button>
+      <button class="btn europe" data-filter="europe" onclick="setRegion('europe',this)">Europe</button>
+      <button class="btn americas" data-filter="americas" onclick="setRegion('americas',this)">Americas</button>
+      <button class="btn intergov" data-filter="intergov" onclick="setRegion('intergov',this)">🏛 Intergovernmental</button>
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="filter-label">Priority</span>
+    <div class="filter-group" id="priority-filters">
+      <button class="btn active" data-filter="all" onclick="setPriority('all',this)">All</button>
+      <button class="btn" data-filter="must" onclick="setPriority('must',this)" style="color:var(--must)">Must Attend</button>
+      <button class="btn" data-filter="rec" onclick="setPriority('rec',this)" style="color:var(--rec)">Recommended</button>
+      <button class="btn" data-filter="mon" onclick="setPriority('mon',this)">Monitor</button>
+      <button class="btn" data-filter="starred" onclick="setPriority('starred',this)" style="color:#f59e0b">★ Starred</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div id="events-container"></div>
+  <div class="empty-state" id="empty-state">
+    <h3>No events found</h3>
+    <p>Try adjusting your filters or search terms.</p>
+  </div>
+</main>
+
+<script>
+const IG_BODIES = ["Africa CDC","AU ","ASEAN","AHMM","WHO AFRO","WHO SEARO","ECA ","G7","UNAIDS","Global Fund","CPHIA","Extraordinary Summit","WHA","UNGA","Regional Committee"];
+
+const EVENTS = [
+  {id:1,name:"Health.Tech Global Summit 2026",date:"Mar 3–5, 2026",month:"March",monthOrder:3,location:"Basel, Switzerland",region:"europe",priority:"rec",desc:"European medtech and digital health convergence summit. 5,000+ delegates. Pharma, medtech, diagnostics, digital therapeutics.",dureRelevance:"European pharma and medtech partnerships. Pharmacovigilance and clinical data management portfolio.",tags:["MedTech","Digital Health","Europe","Innovation"],link:"https://sip-baselarea.com",starred:false,occurred:false},
+  {id:2,name:"HIMSS26 Global Health Conference",date:"Mar 9–12, 2026",month:"March",monthOrder:3,location:"Las Vegas, USA",region:"americas",priority:"rec",desc:"World's largest health IT conference. 1,000+ exhibitors. AI, interoperability, digital infrastructure, HIT transformation.",dureRelevance:"Showcase DHIS2, AI tools (Panga). Partnerships with large system integrators who sub-contract LMIC implementation work.",tags:["AI","Interoperability","HMIS","Health IT","HIS"],link:"https://www.himssconference.com",starred:false,occurred:false},
+  {id:3,name:"ECA Conference of African Finance Ministers",date:"Mar 2026 (TBC)",month:"March",monthOrder:3,location:"Morocco",region:"africa",priority:"rec",desc:"UN Economic Commission for Africa annual ministerial. Finance and health convergence track confirmed for 2026. Finance ministers and health ministers on integrated health financing and health sovereignty.",dureRelevance:"Finance-health integration as a BD frontier. Dure's data systems help governments demonstrate health ROI to finance ministries.",tags:["ECA","Africa","Health Financing","Finance Ministers","UHC"],link:"https://www.uneca.org",starred:false,occurred:false},
+  {id:4,name:"DMEA 2026 — Digital Health Europe",date:"Apr 7–9, 2026",month:"April",monthOrder:4,location:"Berlin, Germany",region:"europe",priority:"rec",desc:"Germany's flagship digital health congress. EHR, AI, EU health data policy, digital maturity, clinical informatics.",dureRelevance:"EU positioning. German government and EU Commission health digital policy contacts.",tags:["eHealth","EHR","EU Policy","Interoperability"],link:"https://www.dmea.de/en",starred:false,occurred:false},
+  {id:5,name:"World Health Summit — Africa Regional",date:"Apr 27–29, 2026",month:"April",monthOrder:4,location:"Nairobi, Kenya",region:"africa",priority:"high",desc:"World Health Summit regional convening for Africa. Health ministers, donors, implementers from East and Southern Africa. Chronic diseases, health financing, pandemic preparedness.",dureRelevance:"Direct BD for East Africa. Kenya is a core Dure market. SSA ministers of health in attendance.",tags:["Africa","Health Financing","NCD","Infectious Disease","East Africa"],link:"https://www.worldhealthsummit.org",starred:false,occurred:false},
+  {id:6,name:"Vitalis 2026",date:"May 4–7, 2026",month:"May",monthOrder:5,location:"Gothenburg, Sweden",region:"europe",priority:"mon",desc:"Largest Nordic eHealth conference. Public sector focus, primary care digitalization, EHR interoperability.",dureRelevance:"Sida (Sweden's aid agency) contacts who fund significant LMIC digital health work.",tags:["eHealth","Nordic","Public Sector"],link:"https://vitalis.nu/en",starred:false,occurred:false},
+  {id:7,name:"Africa CDC Extraordinary Summit — Local Health Manufacturing",date:"May 2026 (TBC)",month:"May",monthOrder:5,location:"Nairobi, Kenya",region:"africa",priority:"high",desc:"AU-mandated Extraordinary Summit convened by President Ruto (AU Champion for Local Manufacturing). Formally requested by all Heads of State at the 39th AU Assembly Feb 2026. End-to-end local manufacturing of vaccines, diagnostics, therapeutics. Africa CDC + AUC-HHS + AUDA-NEPAD + AMA co-organising.",dureRelevance:"Critical intersection with Dure's pharmacovigilance, supply chain data, and health commodity tracking. AU-mandated = procurement decisions follow.",tags:["Africa CDC","AU","Local Manufacturing","Pharmacovigilance","Supply Chain"],link:"https://africacdc.org",starred:false,occurred:false},
+  {id:8,name:"World Health Assembly (WHA79)",date:"May 18–23, 2026",month:"May",monthOrder:5,location:"Geneva, Switzerland",region:"global",priority:"high",desc:"WHO's annual governing body. 194 member states. Pandemic treaty adoption, WHO reform, digital health strategy 2028–2033 discussions. Sets global health policy agenda for the year.",dureRelevance:"Most important global health policy moment of 2026. Critical for WHO relationship maintenance and upcoming digital health programmes.",tags:["WHO","Global Policy","Pandemic Treaty","UHC","Digital Health"],link:"https://www.who.int/about/governance/world-health-assembly",starred:false,occurred:false},
+  {id:9,name:"Geneva Health Forum 2026",date:"May 18–22, 2026",month:"May",monthOrder:5,location:"Geneva, Switzerland",region:"global",priority:"high",desc:"Co-located with WHA. LMIC voices, practitioners, civil society. Bridges implementation science and WHO policy. Side event hosting available.",dureRelevance:"Perfect fit. LMIC implementers and WHO in one room. Consider hosting a side session on community digital health or AI for surveillance.",tags:["LMIC","Implementation","Civil Society","WHO","Side Events"],link:"https://genevahealthforum.com",starred:false,occurred:false},
+  {id:10,name:"Geneva Digital Health Day 2026",date:"May 21, 2026",month:"May",monthOrder:5,location:"Geneva, Switzerland",region:"global",priority:"high",desc:"Co-located with WHA. 800+ participants from WHO, GIDH, academia, private sector. AI, equity, digital health implementation. Key global digital health community gathering.",dureRelevance:"Dure's home territory. Direct access to WHO HQ digital health leads and GIDH partners. Speak or exhibit. Where next WHO digital health programme discussions surface.",tags:["WHO","GIDH","Digital Health","AI","Implementation"],link:"https://gdhub.org/gdhd",starred:false,occurred:false},
+  {id:11,name:"HIMSS Europe 2026",date:"May 19–21, 2026",month:"May",monthOrder:5,location:"Copenhagen, Denmark",region:"europe",priority:"high",desc:"European HIMSS. EU health ministers, WHO Europe, digital maturity standards, AI policy, health data governance. Annual European digital health policy convening.",dureRelevance:"WHO Europe and EU digital health policy contacts. Position for EU-funded LMIC programmes and LTA partners.",tags:["Digital Maturity","AI Policy","WHO Europe","eHealth"],link:"https://www.himss.org/events-overview/european-health-conference-and-exhibition",starred:false,occurred:false},
+  {id:12,name:"G7 Health Ministers Meeting 2026",date:"May/Jun 2026 (TBC)",month:"May",monthOrder:5,location:"Canada (G7 Chair 2026)",region:"global",priority:"mon",desc:"Annual G7 Health Ministers under Canadian G7 Presidency. Pandemic preparedness, digital health, health system resilience. Decisions cascade into bilateral aid and multilateral health financing.",dureRelevance:"Monitor communiqué for digital health financing commitments that drive LMIC programming in Dure's target markets.",tags:["G7","Global Policy","Health Financing","Pandemic Preparedness"],link:"https://www.g7canada.ca",starred:false,occurred:false},
+  {id:13,name:"Healthcare Innovation Summit Africa",date:"May 27–28, 2026",month:"May",monthOrder:5,location:"Johannesburg, South Africa",region:"africa",priority:"high",desc:"Hospital executives, policymakers, digital health specialists, health-tech startups from across Sub-Saharan Africa. AI and digital health for Africa theme.",dureRelevance:"Prime Africa BD event. Dure's 15+ country Africa presence is a major differentiator. MoH contacts in Southern and East Africa.",tags:["Africa","AI","Connected Care","Digital Health","Southern Africa"],link:"https://www.wearetech.africa",starred:false,occurred:false},
+  {id:14,name:"Smart Health Asia 2026",date:"Jul 1–2, 2026",month:"July",monthOrder:7,location:"Singapore",region:"asia",priority:"rec",desc:"Premier digital health trade show for Asia-Pacific. Policymakers, healthcare providers, innovators. AI diagnostics, healthcare IT, remote monitoring, ASEAN digital transformation.",dureRelevance:"Good for ASEAN BD pipeline. SE Asian MoH officials and health system decision-makers in one place. Singapore is the regional hub for ASEAN health policy.",tags:["Asia-Pacific","Digital Health","ASEAN","AI","Health IT"],link:"https://smarthealthasia.com",starred:false,occurred:false},
+  {id:15,name:"WHO AFRO Regional Committee (76th)",date:"Aug 24–28, 2026",month:"August",monthOrder:8,location:"Addis Ababa, Ethiopia",region:"africa",priority:"high",desc:"Annual WHO Africa regional governing body. Health ministers from 47 African countries. Sets WHO AFRO priority agenda and endorses new frameworks. Digital health and UHC on agenda.",dureRelevance:"Critical. Relationship building with WHO AFRO and African MoH delegations. Decisions here directly precede tenders.",tags:["WHO AFRO","Africa","Health Policy","MoH","Regional Committee"],link:"https://www.afro.who.int/about-us/governance/regional-committee",starred:false,occurred:false},
+  {id:16,name:"18th World Congress on Public Health",date:"Sep 6–9, 2026",month:"September",monthOrder:9,location:"Cape Town, South Africa",region:"africa",priority:"high",desc:"First time in Southern Africa. 2,000+ delegates. Global public health, equity, sustainability, universal health coverage. WHO AFRO and Global Fund implementers.",dureRelevance:"Flagship Africa positioning. Speaking slot on digital health systems strengthening in Africa. WHO AFRO and Global Fund implementers present.",tags:["Public Health","Africa","Equity","Surveillance","UHC"],link:"https://www.wcph.org",starred:false,occurred:false},
+  {id:17,name:"9th World One Health Congress",date:"Sep 4–7, 2026",month:"September",monthOrder:9,location:"Lisbon, Portugal",region:"europe",priority:"rec",desc:"Human, animal and environmental health sectors. Zoonotic diseases, AMR, pandemic preparedness, surveillance systems, One Health policy.",dureRelevance:"One Health is a strategic growth area — intersects with DHIS2, surveillance systems. WHO, FAO, OIE partnership discussions.",tags:["One Health","Surveillance","AMR","DHIS2","Zoonoses"],link:"https://www.onehealthcongress.org",starred:false,occurred:false},
+  {id:18,name:"17th ASEAN Health Ministers Meeting (AHMM)",date:"Sep 7–11, 2026",month:"September",monthOrder:9,location:"Malaysia (TBC)",region:"asia",priority:"high",desc:"Biennial ASEAN Health Ministers — all 10 ASEAN states + Timor-Leste + China, Japan, South Korea, US + WHO. Sets ASEAN health 5-year road map 2026–2030. Digital health, One Health, immunization, pandemic preparedness. Confirmed in official ASEAN 2026 Public Calendar.",dureRelevance:"Critical for SE Asia expansion. Timor-Leste is an active Dure market. ASEAN Digital Masterplan 2026–2030 names digital health systems as a priority.",tags:["ASEAN","Health Ministers","Digital Health","Timor-Leste","One Health","AHMM"],link:"https://asean.org",starred:false,occurred:false},
+  {id:19,name:"WHO SEARO Regional Committee (79th)",date:"Sep 7–10, 2026",month:"September",monthOrder:9,location:"Dili, Timor-Leste",region:"asia",priority:"high",desc:"WHO South-East Asia regional governing body. Health ministers from Bangladesh, Bhutan, India, Maldives, Myanmar, Nepal, Sri Lanka, Thailand, Timor-Leste. Digital health and UHC priorities. Confirmed in WHO constitutional calendar.",dureRelevance:"Critical for SEARO expansion. India, Bangladesh, Timor-Leste are all active Dure markets. WHO SEARO programmes emerge from RC decisions.",tags:["WHO SEARO","India","Bangladesh","Timor-Leste","UHC","Digital Health","Regional Committee"],link:"https://www.searo.who.int",starred:false,occurred:false},
+  {id:20,name:"UNGA 80th Session — High-Level Week",date:"Sep 22–26, 2026",month:"September",monthOrder:9,location:"New York, USA",region:"global",priority:"rec",desc:"UN General Assembly high-level general debate. UHC, pandemic preparedness, digital health side events. 80th anniversary session — significant for new commitments.",dureRelevance:"UN ecosystem positioning. Side events draw WHO, UNICEF, UNFPA procurement and programme leads.",tags:["UN","UNGA","UHC","Pandemic Preparedness","Financing"],link:"https://www.un.org/en/ga",starred:false,occurred:false},
+  {id:21,name:"Africa Health ExCon 2026",date:"Sep/Oct 2026 (TBC)",month:"September",monthOrder:9,location:"Africa (TBC — past: Cairo, Durban)",region:"africa",priority:"rec",desc:"Annual Africa health exhibition and congress by Africa CDC + AUDA-NEPAD. Health data governance, digital transformation, AI in health. 2025 edition in Cairo featured the Continental Health Data Governance Framework.",dureRelevance:"Africa CDC's data governance framework being operationalised in 2026 — directly relevant to Dure's DHIS2 and data systems work.",tags:["Africa CDC","AUDA-NEPAD","Data Governance","Digital Health","AI"],link:"https://africacdc.org",starred:false,occurred:false},
+  {id:22,name:"World Health Summit (Berlin)",date:"Oct 2026 (TBC)",month:"October",monthOrder:10,location:"Berlin, Germany",region:"global",priority:"high",desc:"G7/G20 health leads, WHO, Gates Foundation, CEPI, major bilateral donors. Sets global health financing agenda for the following year. Heads of State health advisors in attendance.",dureRelevance:"Most senior global health event after WHA. 2027 digital health programme decisions are seeded here. Critical for Dure leadership.",tags:["Global Policy","WHO","Financing","Digital Health","Donors"],link:"https://www.worldhealthsummit.org",starred:false,occurred:false},
+  {id:23,name:"CPHIA 2026 — Conference on Public Health in Africa",date:"Nov 8–12, 2026",month:"November",monthOrder:11,location:"Addis Ababa, Ethiopia",region:"africa",priority:"high",desc:"Africa's largest public health conference — 20,000+ participants from 70+ countries. Convened by Africa CDC. Heads of State, Ministers of Health, scientists, innovators. Digital transformation confirmed as 2026 pillar. Dates confirmed by Africa CDC DG Dr Jean Kaseya at CPHIA 2025 closing.",dureRelevance:"THE flagship Africa platform for Dure. Africa CDC's new Central Data Repository and Health Data Governance Framework directly relevant to Dure's DHIS2 and surveillance work. Speaking slot and exhibition strongly recommended.",tags:["Africa CDC","Public Health","Digital Transformation","DHIS2","Data Governance","UHC"],link:"https://africacdc.org/thematic-area/international-conference-on-public-health-in-africa-cphia/",starred:false,occurred:false},
+  {id:24,name:"21st International Congress on Infectious Diseases",date:"Nov 10–13, 2026",month:"November",monthOrder:11,location:"TBC",region:"global",priority:"rec",desc:"Surveillance, outbreak response, AMR, disease data systems, pandemic preparedness science. Global infectious disease scientific community.",dureRelevance:"Disease surveillance, DHIS2, outbreak analytics. CDC, ECDC, WHO surveillance leads present.",tags:["Infectious Disease","Surveillance","AMR","DHIS2","Outbreak"],link:"https://www.isid.org",starred:false,occurred:false},
+  {id:25,name:"COP31 — Climate & Health Track",date:"Nov 9–20, 2026",month:"November",monthOrder:11,location:"Antalya, Turkey",region:"global",priority:"mon",desc:"UN Climate Conference. Climate-sensitive diseases, resilient health systems, climate-health finance. Health pavilion with WHO, PAHO, national delegations.",dureRelevance:"DHIS2-based climate-health surveillance is an emerging opportunity for Pandemic Fund and Green Climate Fund projects.",tags:["Climate","Health Systems","Surveillance","LMIC","Green Finance"],link:"https://unfccc.int/cop31",starred:false,occurred:false},
+  {id:26,name:"Global Fund 56th Board Meeting",date:"Nov 17–19, 2026",month:"November",monthOrder:11,location:"Geneva, Switzerland",region:"global",priority:"high",desc:"Global Fund Board approves grant portfolios. GC7 implementation updates, digital health investment decisions. Board and constituency caucuses.",dureRelevance:"Critical. GC7 digital health programme decisions confirmed here. Pre-meeting engagement with Principal Recipients essential.",tags:["Global Fund","HIV","TB","Malaria","GC7","Grants"],link:"https://www.theglobalfund.org/en/board",starred:false,occurred:false},
+  {id:27,name:"59th UNAIDS Programme Coordinating Board",date:"Dec 8–10, 2026",month:"December",monthOrder:12,location:"Geneva, Switzerland",region:"global",priority:"rec",desc:"UNAIDS PCB sets HIV programme strategy and procurement priorities. Civil society, bilateral donors, UN agencies, country delegations.",dureRelevance:"Existing UNAIDS relationships. HIV data systems, community monitoring (OneImpact), surveillance tools on agenda.",tags:["HIV/AIDS","UNAIDS","Surveillance","Community Monitoring","OneImpact"],link:"https://www.unaids.org",starred:false,occurred:false},
+  {id:28,name:"39th AU Assembly — AHSS Health Decisions",date:"Feb 13–15, 2026",month:"February",monthOrder:2,location:"Addis Ababa, Ethiopia",region:"africa",priority:"high",desc:"39th AU Assembly endorsed the Africa Health Security and Sovereignty (AHSS) Agenda. Mandated: Africa CDC Data Sharing Agreement; Health Data Governance Framework; 2 million CHWs by 2030; Central Data Repository integration. Digital transformation officially elevated as AU continental pillar.",dureRelevance:"Critical intelligence — already occurred. AU mandated digitisation of primary health care and CHW programmes across 47 member states. Dure's eCHIS/CHW tools and DHIS2 directly match what MoH digital budgets will now fund. 40th AU Summit Feb 2027 — position now.",tags:["AU","Africa CDC","AHSS","Digital Transformation","CHW","DHIS2"],link:"https://au.int/en/newsevents/20260214/39th-ordinary-session-assembly",starred:false,occurred:true},
+  {id:29,name:"ViVE 2026",date:"Mar 16–19, 2026",month:"March",monthOrder:3,location:"Los Angeles, USA",region:"americas",priority:"mon",desc:"Co-hosted by HLTH and CHIME. Deal-making focused event for health IT executives, investors, payers and providers.",dureRelevance:"US investor and BD pipeline. Less LMIC focus but useful for healthtech partnership introductions.",tags:["Health IT","Investment","USA"],link:"https://www.viveevent.com",starred:false,occurred:false},
+];
+
+let currentRegion = 'all';
+let currentPriority = 'all';
+
+function isIntergov(e) {
+  const text = e.name + ' ' + e.tags.join(' ');
+  return IG_BODIES.some(k => text.includes(k));
+}
+
+function renderAll() {
+  const container = document.getElementById('events-container');
+  container.innerHTML = '';
+  
+  // Group by month
+  const byMonth = {};
+  const monthOrder = {};
+  EVENTS.forEach(e => {
+    if (!byMonth[e.month]) { byMonth[e.month] = []; monthOrder[e.month] = e.monthOrder; }
+    byMonth[e.month].push(e);
+  });
+  
+  const sortedMonths = Object.keys(byMonth).sort((a,b) => monthOrder[a] - monthOrder[b]);
+  
+  sortedMonths.forEach(month => {
+    const group = document.createElement('div');
+    group.className = 'month-group';
+    group.dataset.month = month;
+    
+    const header = document.createElement('div');
+    header.className = 'month-header';
+    header.innerHTML = `<span class="month-name">${month} 2026</span><span class="month-count" id="count-${month}"></span>`;
+    group.appendChild(header);
+    
+    const grid = document.createElement('div');
+    grid.className = 'events-grid';
+    grid.id = 'grid-' + month.replace(/\s/g,'');
+    
+    byMonth[month].sort((a,b) => {
+      const po = {high:0,rec:1,mon:2};
+      return po[a.priority] - po[b.priority];
+    }).forEach(e => {
+      grid.appendChild(makeCard(e));
+    });
+    
+    group.appendChild(grid);
+    container.appendChild(group);
+  });
+  
+  applyFilters();
+}
+
+function makeCard(e) {
+  const card = document.createElement('div');
+  card.className = `event-card priority-${e.priority}`;
+  card.dataset.id = e.id;
+  card.dataset.region = e.region;
+  card.dataset.priority = e.priority;
+  card.dataset.intergov = isIntergov(e) ? '1' : '0';
+  card.dataset.text = (e.name + ' ' + e.location + ' ' + e.tags.join(' ') + ' ' + e.desc).toLowerCase();
+  
+  const regionLabels = {africa:'Africa',global:'Global',asia:'Asia-Pacific',europe:'Europe',americas:'Americas'};
+  const prioLabel = {high:'Must Attend',rec:'Recommended',mon:'Monitor'};
+  
+  card.innerHTML = `
+    <div class="card-priority-bar"></div>
+    ${e.occurred ? '<div class="occurred-overlay">OCCURRED</div>' : ''}
+    <div class="card-body">
+      <div class="card-top">
+        <div class="card-title">${e.name}</div>
+        <button class="star-btn ${e.starred?'starred':''}" onclick="toggleStar(${e.id},this)" title="Star this event">★</button>
+      </div>
+      <div class="card-meta">
+        <span class="meta-chip chip-date">📅 ${e.date}</span>
+        <span class="meta-chip chip-location">📍 ${e.location}</span>
+        <span class="meta-chip chip-region-${e.region}">${regionLabels[e.region]}</span>
+        <span class="meta-chip chip-priority-${e.priority === 'high' ? 'must' : e.priority === 'rec' ? 'rec' : 'mon'}">${prioLabel[e.priority]}</span>
+        ${isIntergov(e) ? '<span class="meta-chip chip-intergov">🏛 Intergovernmental</span>' : ''}
+      </div>
+      <div class="card-desc">${e.desc}</div>
+      <div class="card-relevance"><strong>Dure relevance:</strong> ${e.dureRelevance}</div>
+      <div class="card-tags">${e.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="card-footer">
+        <a href="${e.link}" target="_blank" rel="noopener" class="card-link">↗ ${new URL(e.link).hostname.replace('www.','')}</a>
+        <button class="expand-btn" onclick="toggleExpand(this)">Details</button>
+      </div>
+    </div>
+  `;
+  return card;
+}
+
+function toggleStar(id, btn) {
+  const e = EVENTS.find(x => x.id === id);
+  if (!e) return;
+  e.starred = !e.starred;
+  btn.classList.toggle('starred', e.starred);
+  updateCounts();
+}
+
+function toggleExpand(btn) {
+  const card = btn.closest('.event-card');
+  card.classList.toggle('expanded');
+  btn.textContent = card.classList.contains('expanded') ? 'Less' : 'Details';
+}
+
+function setRegion(val, btn) {
+  currentRegion = val;
+  document.querySelectorAll('#region-filters .btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function setPriority(val, btn) {
+  currentPriority = val;
+  document.querySelectorAll('#priority-filters .btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  let totalVisible = 0;
+  
+  const monthGroups = document.querySelectorAll('.month-group');
+  monthGroups.forEach(group => {
+    const cards = group.querySelectorAll('.event-card');
+    let groupVisible = 0;
+    
+    cards.forEach(card => {
+      const regionMatch = currentRegion === 'all' ||
+        card.dataset.region === currentRegion ||
+        (currentRegion === 'intergov' && card.dataset.intergov === '1');
+      
+      const prioMap = {high:'must', rec:'rec', mon:'mon'};
+      const cardPrio = prioMap[card.dataset.priority] || card.dataset.priority;
+      const prioMatch = currentPriority === 'all' ||
+        cardPrio === currentPriority ||
+        (currentPriority === 'starred' && EVENTS.find(e=>e.id==card.dataset.id)?.starred);
+      
+      const searchMatch = !q || card.dataset.text.includes(q);
+      
+      const visible = regionMatch && prioMatch && searchMatch;
+      card.hidden = !visible;
+      if (visible) { groupVisible++; totalVisible++; }
+    });
+    
+    group.hidden = groupVisible === 0;
+    const countEl = group.querySelector('.month-count');
+    if (countEl) countEl.textContent = groupVisible === 1 ? '1 event' : `${groupVisible} events`;
+  });
+  
+  document.getElementById('empty-state').classList.toggle('visible', totalVisible === 0);
+  document.getElementById('total-count').textContent = totalVisible;
+  updateCounts();
+}
+
+function updateCounts() {
+  const mustCount = EVENTS.filter(e => e.priority === 'high').length;
+  const starredCount = EVENTS.filter(e => e.starred).length;
+  document.getElementById('must-count').textContent = mustCount;
+  document.getElementById('starred-count').textContent = starredCount;
+}
+
+renderAll();
+</script>
+</body>
+</html>
